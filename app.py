@@ -4,7 +4,7 @@ import pandas as pd
 st.title("🏎️ 2026 Australian GP - Predicted Podium")
 
 # Load CSV from GitHub raw URL (replace with your URL)
-csv_url = "https://raw.githubusercontent.com/<username>/<repo>/main/predicted_race_results.csv"
+csv_url = "https://raw.githubusercontent.com/suhailahmed10/master/main/predicted_race_results.csv"
 df_pred = pd.read_csv(csv_url)
 
 # Get top 3 predicted drivers
