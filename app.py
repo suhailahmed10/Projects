@@ -19,6 +19,4 @@ st.subheader("📋 Full Race Results")
 full_table = df_pred[["Driver","Constructor","QualRank","QualTime","GapToPole","Grid"]]
 
 
-st.dataframe(
-    full_table.style.background_gradient(cmap='viridis')
-)
+st.dataframe(full_table.style.background_gradient(cmap='viridis'))
