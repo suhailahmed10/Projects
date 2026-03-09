@@ -7,7 +7,7 @@ st.title("🏎️ 2026 Australian GP - Predicted Race Results")
 
 # Load the latest CSV
 # Replace this URL with your CSV location on GitHub or Google Drive
-csv_url = "https://raw.githubusercontent.com/<your_username>/<repo>/main/predicted_race_results.csv"
+csv_url = "https://github.com/suhailahmed10/master/blob/main/predicted_race_results.csv"
 df_pred = pd.read_csv(csv_url)
 
 # Top-3 Podium
