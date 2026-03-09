@@ -1,23 +1,42 @@
 import streamlit as st
 import pandas as pd
 
-st.title("🏎️ 2026 Australian GP - Predicted Podium")
+# Set page layout
+st.set_page_config(page_title="F1 2026 Australian GP Predictions", layout="wide")
 
-# Load CSV from GitHub raw URL (replace with your URL)
+# Title
+st.title("🏎️ 2026 Australian GP - Predicted Race Results")
+
+# CSV URL
 csv_url = "https://raw.githubusercontent.com/suhailahmed10/master/main/predicted_race_results.csv"
+
+# Load CSV
 df_pred = pd.read_csv(csv_url)
 
-# Get top 3 predicted drivers
+# -------------------------
+# Top-3 Podium Table
+# -------------------------
+st.subheader("🏆 Predicted Podium")
+
+# Get top 3 drivers
 top3 = df_pred.sort_values("PredictedRacePos").head(3).reset_index(drop=True)
 top3["Medal"] = ["🥇","🥈","🥉"]
 
-# Columns to display (exclude index & PredictedRacePos)
-st.table(top3[["Medal","Driver","Constructor"]])
+# Columns to display
+top3_display = top3[["Medal","Driver","Constructor"]]
 
+# Display table without index
+st.table(top3_display.style.hide_index())
+
+# -------------------------
+# Full Race Table
+# -------------------------
 st.subheader("📋 Full Race Results")
 
-# Select columns to show
+# Columns to show in full table (exclude PredictedRacePos)
 full_table = df_pred[["Driver","Constructor","QualRank","QualTime","GapToPole","Grid"]]
 
-# Display table
-st.dataframe(full_table)
+# Display table without index and with gradient for readability
+st.dataframe(
+    full_table.style.hide_index().background_gradient(cmap='viridis')
+)
